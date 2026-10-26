@@ -1,0 +1,931 @@
+<title>Claude · Boutique du Menuisier Tignieu</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Mise en page : en-tête collant, hero bleu nuit façon plan d'atelier avec le formulaire de chiffrage à droite, puis sections claires. */
+:root{
+  --navy:#062B49; --navy-2:#0B3A60; --blue:#005B9D; --blue-soft:#E8F1F9;
+  --orange:#FEA101; --orange-2:#FFB431;
+  --ink:#0E1B26; --muted:#4A5A68; --line:#DCE4EB; --mist:#F3F6F9; --paper:#FFFFFF;
+  --on-navy:#FFFFFF; --on-navy-muted:#B9C9D8;
+  --ok:#1E7A4E;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r-lg:20px; --r-md:14px; --r-sm:10px;
+  --gutter-l:max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(20px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--blue)}
+a:hover{color:var(--navy)}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:6px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+
+/* ---------- boutons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:0;background:var(--orange);color:var(--navy);font:700 16px/1 var(--f-display);letter-spacing:.005em;text-decoration:none;cursor:pointer;transition:background .15s, transform .15s}
+.btn:hover{background:var(--orange-2);color:var(--navy)}
+.btn:active{transform:translateY(1px)}
+.btn .ico{width:20px;height:20px;stroke-width:2}
+.btn-line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn-line:hover{background:rgba(255,255,255,.08);color:inherit}
+.btn-block{width:100%}
+
+/* ---------- en-tête ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:var(--on-navy);border-bottom:1px solid rgba(255,255,255,.08)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--on-navy);text-decoration:none}
+.brand:hover{color:var(--on-navy)}
+.brand-mark{width:40px;height:40px;border-radius:11px;background:var(--orange);color:var(--navy);display:grid;place-items:center;flex:none}
+.brand-mark .ico{width:24px;height:24px;stroke-width:2}
+.brand-txt{display:flex;flex-direction:column;line-height:1.1}
+.brand-txt b{font:700 17px var(--f-display);letter-spacing:-.01em}
+.brand-txt span{font-size:12.5px;color:var(--on-navy-muted);letter-spacing:.04em;text-transform:uppercase}
+.top-actions{display:flex;align-items:center;gap:14px}
+.top-tel{display:flex;align-items:center;gap:8px;color:var(--on-navy);text-decoration:none;font-weight:600;font-variant-numeric:tabular-nums}
+.top-tel:hover{color:var(--orange)}
+.top-tel .ico{width:20px;height:20px;color:var(--orange)}
+.top .btn{min-height:44px;padding:0 20px;font-size:15px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--navy);color:var(--on-navy);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:32px 32px}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:56px;align-items:start;padding-block:64px 88px}
+.hero-copy{display:flex;flex-direction:column;gap:26px;padding-top:12px;min-width:0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:7px 14px 7px 10px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);font-size:14px;font-weight:600;color:var(--on-navy)}
+.eyebrow .ico{width:18px;height:18px;color:var(--orange)}
+.hero h1{font-size:clamp(40px,5.4vw,72px);font-weight:800;line-height:.98}
+.hero h1 .u{position:relative;white-space:nowrap;color:var(--orange)}
+.hero h1 .u svg{position:absolute;left:0;right:0;bottom:-.14em;width:100%;height:.22em;overflow:visible}
+.lead{font-size:clamp(17px,1.5vw,20px);color:var(--on-navy-muted);max-width:34em}
+.lead strong{color:var(--on-navy);font-weight:600}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,max-content));gap:12px 28px;list-style:none;margin:0;padding:0}
+.checks li{display:flex;align-items:center;gap:10px;font-weight:500}
+.checks .ico{width:20px;height:20px;color:var(--orange);stroke-width:2.2}
+.proof{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
+.rating{display:flex;align-items:center;gap:12px}
+.rating-num{font:800 38px/1 var(--f-display);letter-spacing:-.03em}
+.stars{display:flex;gap:2px;color:var(--orange)}
+.stars svg{width:17px;height:17px;fill:currentColor}
+.rating small{display:block;font-size:13.5px;color:var(--on-navy-muted)}
+.badge{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.25;color:var(--on-navy-muted)}
+.badge b{display:block;color:var(--on-navy);font-size:15px}
+.badge .ico{width:30px;height:30px;color:var(--orange);stroke-width:1.5}
+.plan{position:absolute;left:-40px;bottom:-30px;width:300px;opacity:.22;pointer-events:none}
+
+/* ---------- carte formulaire ---------- */
+.quote{position:relative;background:var(--paper);color:var(--ink);border-radius:var(--r-lg);box-shadow:0 30px 60px -20px rgba(0,10,25,.55),0 0 0 1px rgba(255,255,255,.06);overflow:hidden;min-width:0}
+.advisor{display:flex;align-items:center;gap:14px;padding:18px 22px;background:var(--mist);border-bottom:1px solid var(--line)}
+.avatar{position:relative;width:60px;height:60px;border-radius:50%;flex:none;background:var(--navy);color:var(--on-navy);display:grid;place-items:center;font:800 24px var(--f-display);box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--orange);overflow:hidden}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.advisor-txt{min-width:0;line-height:1.25}
+.advisor-txt b{font:700 18px var(--f-display);display:block}
+.advisor-txt span{font-size:14px;color:var(--muted)}
+.advisor-tag{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ok);background:#E5F3EC;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.advisor-tag i{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.quote-body{padding:22px 24px 24px}
+.quote-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.quote-head h2{font-size:24px;font-weight:700}
+.quote-head span{font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px}
+.progress i{display:block;height:100%;width:33.33%;background:var(--orange);border-radius:6px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.step{display:flex;flex-direction:column;gap:18px}
+.step[hidden]{display:none}
+.q{font:700 17px/1.3 var(--f-display)}
+.q small{font:500 14px var(--f-body);color:var(--muted);margin-left:4px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;padding:12px 8px;border-radius:var(--r-md);border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font:600 14px/1.2 var(--f-body);text-align:center;cursor:pointer;transition:border-color .15s, background .15s, transform .15s}
+.tile .ico{width:30px;height:30px;color:var(--blue);stroke-width:1.5}
+.tile:hover{border-color:#9DB7CE}
+.tile[aria-pressed="true"]{border-color:var(--blue);background:var(--blue-soft);box-shadow:inset 0 0 0 1px var(--blue)}
+.tile .tick{position:absolute;top:7px;right:7px;width:20px;height:20px;border-radius:50%;background:var(--orange);color:var(--navy);display:grid;place-items:center;opacity:0;transform:scale(.5);transition:opacity .15s, transform .2s cubic-bezier(.2,.9,.3,1.4)}
+.tile .tick svg{width:12px;height:12px;stroke-width:3}
+.tile[aria-pressed="true"] .tick{opacity:1;transform:none}
+.group{display:flex;flex-direction:column;gap:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font:500 15px var(--f-body);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.chip:hover{border-color:#9DB7CE}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:600}
+.field label small{font-weight:400;color:var(--muted)}
+.field input{width:100%;height:50px;padding:0 14px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--mist);color:var(--ink);font:16px var(--f-body);transition:border-color .15s, background .15s, box-shadow .15s}
+.field input:focus{outline:none;border-color:var(--blue);background:var(--paper);box-shadow:0 0 0 4px rgba(0,91,157,.14)}
+.field input[aria-invalid="true"]{border-color:#C0392B;background:#FDF3F2}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--muted);cursor:pointer}
+.consent input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--blue);flex:none}
+.err{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:500;color:#A93226;background:#FDF0EE;border-radius:var(--r-sm);padding:10px 12px}
+.err[hidden]{display:none}
+.nav{display:flex;gap:10px;align-items:center}
+.nav .btn{flex:1}
+.back{min-height:52px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font:600 15px var(--f-body);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.back .ico{width:18px;height:18px}
+.back:hover{border-color:#9DB7CE}
+.reassure{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.reassure span{display:flex;align-items:center;gap:6px}
+.reassure .ico{width:16px;height:16px;color:var(--ok);stroke-width:2.2}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.done{align-items:center;text-align:center;padding:8px 0 4px}
+.done-ico{width:72px;height:72px;border-radius:50%;background:#E5F3EC;color:var(--ok);display:grid;place-items:center}
+.done-ico .ico{width:36px;height:36px;stroke-width:2.4}
+.done h3{font-size:26px}
+.done p{color:var(--muted);max-width:30em}
+.next{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%}
+.next li{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:var(--r-md);background:var(--mist);font-size:15px}
+.next b{width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--on-navy);display:grid;place-items:center;font:700 14px var(--f-display);flex:none}
+
+/* ---------- bandeau chiffres ---------- */
+.figures{border-bottom:1px solid var(--line)}
+.figures .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-block:0}
+.fig{padding:34px 24px;display:flex;flex-direction:column;gap:4px;border-left:1px solid var(--line)}
+.fig:first-child{border-left:0;padding-left:0}
+.fig b{font:800 clamp(34px,3.4vw,46px)/1 var(--f-display);letter-spacing:-.03em;color:var(--navy);font-variant-numeric:tabular-nums}
+.fig b em{font-style:normal;color:var(--blue)}
+.fig span{font-size:15px;color:var(--muted)}
+
+/* ---------- sections ---------- */
+.sec{padding-block:104px}
+.sec-mist{background:var(--mist)}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.kicker::before{content:"";width:22px;height:2px;background:var(--orange)}
+.sec-head{display:flex;flex-direction:column;gap:16px;max-width:720px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(32px,3.6vw,50px);font-weight:800}
+.sec-head p{font-size:18px;color:var(--muted)}
+.sec-head.split{max-width:none;flex-direction:row;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.sec-head.split > div{display:flex;flex-direction:column;gap:16px;max-width:680px}
+
+/* conseiller */
+.adv{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:72px;align-items:center}
+.portrait{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:var(--r-lg);background:var(--navy);overflow:hidden}
+.portrait::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px}
+.portrait-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--on-navy)}
+.portrait-ph b{font:800 120px/1 var(--f-display);color:var(--orange)}
+.portrait-ph span{font-size:14px;color:var(--on-navy-muted);letter-spacing:.06em;text-transform:uppercase}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait-card{position:absolute;left:18px;right:18px;bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:var(--r-md);background:rgba(255,255,255,.96);color:var(--ink);backdrop-filter:blur(6px)}
+.portrait-card b{font:700 19px var(--f-display);display:block}
+.portrait-card span{font-size:13.5px;color:var(--muted)}
+.portrait-card .ico{width:34px;height:34px;padding:7px;border-radius:50%;background:var(--orange);color:var(--navy);stroke-width:2}
+.adv-copy{display:flex;flex-direction:column;gap:26px;min-width:0}
+.adv-copy h2{font-size:clamp(32px,3.6vw,50px);font-weight:800}
+.adv-copy > p{font-size:18px;color:var(--muted);max-width:36em}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pillar{display:flex;flex-direction:column;gap:10px;padding:20px 18px;border-radius:var(--r-md);background:var(--mist)}
+.pillar .ico{width:30px;height:30px;color:var(--blue);stroke-width:1.5}
+.pillar b{font:700 17px/1.2 var(--f-display)}
+.pillar span{font-size:15px;color:var(--muted);line-height:1.45}
+
+/* produits */
+.prods{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.prod{display:flex;flex-direction:column;gap:14px;padding:22px 20px 18px;border-radius:var(--r-lg);background:var(--paper);border:1px solid var(--line);transition:border-color .2s, transform .2s, box-shadow .2s;min-width:0}
+.prod:hover{border-color:#B4C8DA;transform:translateY(-3px);box-shadow:0 18px 30px -18px rgba(6,43,73,.35)}
+.prod-ico{width:54px;height:54px;border-radius:14px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center}
+.prod-ico .ico{width:32px;height:32px;stroke-width:1.5}
+.prod h3{font-size:20px;font-weight:700}
+.prod ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:14.5px;color:var(--muted);flex:1}
+.prod li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--orange);margin-right:8px;vertical-align:middle}
+.prod button{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:0 4px 0 0;border:0;border-top:1px solid var(--line);background:none;color:var(--blue);font:700 15px var(--f-display);cursor:pointer;text-align:left;margin-top:4px;padding-top:12px}
+.prod button .ico{width:30px;height:30px;padding:6px;border-radius:50%;background:var(--orange);color:var(--navy);stroke-width:2.2;transition:transform .2s}
+.prod button:hover .ico{transform:translateX(3px)}
+.materials{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:28px;font-size:15px;color:var(--muted)}
+.materials b{color:var(--ink);font-weight:600;margin-right:4px}
+.materials span{padding:7px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--ink);font-weight:500}
+
+/* étapes */
+.process{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
+.process .sec-head h2{color:var(--on-navy)}
+.process .sec-head p{color:var(--on-navy-muted)}
+.process .kicker{color:var(--orange)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:s}
+.steps li{position:relative;display:flex;flex-direction:column;gap:12px;padding-top:28px;border-top:2px solid rgba(255,255,255,.16)}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;top:-19px;left:0;width:36px;height:36px;border-radius:50%;background:var(--navy);box-shadow:inset 0 0 0 2px var(--orange);color:var(--orange);display:grid;place-items:center;font:800 16px var(--f-display)}
+.steps li:first-child{border-top-color:var(--orange)}
+.steps .when{align-self:flex-start;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--orange);padding:4px 10px;border-radius:999px}
+.steps h3{font-size:22px;font-weight:700;color:var(--on-navy)}
+.steps p{font-size:15.5px;color:var(--on-navy-muted)}
+.process-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:56px}
+.process-cta p{color:var(--on-navy-muted);font-size:15px}
+
+/* atouts */
+.why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.why div{display:flex;flex-direction:column;gap:12px;padding:30px 26px;background:var(--paper)}
+.why .ico{width:36px;height:36px;color:var(--blue);stroke-width:1.4}
+.why b{font:700 20px/1.2 var(--f-display)}
+.why span{font-size:15.5px;color:var(--muted)}
+
+/* avis */
+.reviews{display:grid;grid-template-columns:minmax(0,300px) repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.score{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:30px 26px;border-radius:var(--r-lg);background:var(--navy);color:var(--on-navy)}
+.score b{font:800 76px/1 var(--f-display);letter-spacing:-.04em}
+.score .stars svg{width:22px;height:22px}
+.score span{color:var(--on-navy-muted);font-size:15px}
+.review{margin:0;display:flex;flex-direction:column;gap:16px;padding:28px 26px;border-radius:var(--r-lg);background:var(--paper);border:1px solid var(--line)}
+.review .stars svg{width:16px;height:16px}
+.review blockquote{margin:0;font-size:16.5px;line-height:1.55;flex:1}
+.review figcaption{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--muted)}
+.review figcaption i{width:36px;height:36px;border-radius:50%;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font:700 15px var(--f-display);font-style:normal}
+.review figcaption b{color:var(--ink);font-weight:600}
+
+/* boutique */
+.shop{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
+.shop-main{display:flex;flex-direction:column;gap:22px;padding:44px 40px;border-radius:var(--r-lg);background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
+.shop-main::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.shop-main > *{position:relative}
+.shop-main h2{font-size:clamp(30px,3.2vw,44px);font-weight:800;color:var(--on-navy)}
+.shop-main .kicker{color:var(--orange)}
+.info{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.info li{display:flex;gap:14px;align-items:flex-start}
+.info .ico{width:22px;height:22px;color:var(--orange);margin-top:2px}
+.info b{display:block;font-weight:600}
+.info span{color:var(--on-navy-muted);font-size:15.5px;font-variant-numeric:tabular-nums}
+.info a{color:var(--on-navy)}
+.info a:hover{color:var(--orange)}
+.shop-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.zone{display:flex;flex-direction:column;gap:18px;padding:40px 36px;border-radius:var(--r-lg);background:var(--mist)}
+.zone h3{font-size:24px;font-weight:700}
+.zone p{color:var(--muted);font-size:15.5px}
+.towns{display:flex;flex-wrap:wrap;gap:8px}
+.towns span{padding:8px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:14.5px;font-weight:500}
+.towns span.here{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.network{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+.network b{color:var(--ink)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:64px;align-items:start}
+.faq-grid .sec-head{margin-bottom:0;position:sticky;top:110px}
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;cursor:pointer;font:700 19px/1.3 var(--f-display)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{width:32px;height:32px;border-radius:50%;flex:none;background:var(--mist);display:grid;place-items:center;transition:transform .2s, background .2s}
+.faq summary i .ico{width:16px;height:16px;stroke-width:2.4;color:var(--navy)}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--orange)}
+.faq details p{padding:0 48px 24px 0;color:var(--muted);font-size:16.5px;max-width:42em}
+
+/* CTA final */
+.final{background:var(--orange);color:var(--navy)}
+.final .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;padding-block:72px}
+.final h2{font-size:clamp(32px,4vw,54px);font-weight:800}
+.final p{font-size:18px;margin-top:12px;max-width:34em}
+.final-btns{display:flex;flex-wrap:wrap;gap:12px}
+.final .btn{background:var(--navy);color:var(--on-navy)}
+.final .btn:hover{background:var(--navy-2);color:var(--on-navy)}
+.final .btn-line{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 2px var(--navy)}
+.final .btn-line:hover{background:rgba(6,43,73,.08);color:var(--navy)}
+
+/* pied de page */
+.foot{background:#04203A;color:var(--on-navy-muted);font-size:14.5px}
+.foot .wrap{padding-block:56px 32px;display:flex;flex-direction:column;gap:40px}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(4,minmax(0,1fr));gap:28px}
+.foot-top h4{margin:0 0 10px;font:700 15px var(--f-display);color:var(--on-navy)}
+.foot-top p{line-height:1.6}
+.foot-top a{color:var(--on-navy-muted);text-decoration:none}
+.foot-top a:hover{color:var(--orange)}
+.foot .brand{margin-bottom:14px}
+.foot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13.5px}
+.foot-bot a{color:var(--on-navy-muted)}
+
+/* barre mobile */
+.mbar{display:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .prods{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .why{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .reviews{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-top{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .foot-top > div:first-child{grid-column:1/-1}
+}
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:36px;padding-block:40px 56px}
+  .plan{display:none}
+  .adv{grid-template-columns:minmax(0,1fr);gap:40px}
+  .portrait{max-width:440px}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 20px}
+  .shop{grid-template-columns:minmax(0,1fr)}
+  .faq-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+  .faq-grid .sec-head{position:static}
+  .final .wrap{grid-template-columns:minmax(0,1fr)}
+  .figures .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fig:nth-child(3){border-left:0;padding-left:0}
+  .fig:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:760px){
+  body{font-size:16px;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .top-tel span,.top .btn{display:none}
+  .top-tel{width:44px;height:44px;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08)}
+  .brand-txt b{font-size:15.5px}
+  .sec{padding-block:72px}
+  .pillars{grid-template-columns:minmax(0,1fr)}
+  .prods{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .prod{padding:18px 16px 14px}
+  .checks{grid-template-columns:minmax(0,1fr)}
+  .mbar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -10px 24px -12px rgba(6,43,73,.25);padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter-l)}
+  .mbar .btn{min-height:52px}
+  .mbar .call{width:52px;padding:0;background:var(--navy);color:var(--on-navy)}
+  .mbar .call .ico{width:22px;height:22px}
+}
+@media (max-width:560px){
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fields{grid-template-columns:minmax(0,1fr)}
+  .quote-body{padding:20px 18px}
+  .advisor{padding:16px 18px}
+  .advisor-tag{display:none}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .why{grid-template-columns:minmax(0,1fr)}
+  .reviews{grid-template-columns:minmax(0,1fr)}
+  .shop-main,.zone{padding:30px 22px}
+  .foot-top{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .prod h3{font-size:18px}
+  .figures .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fig{padding:24px 14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<!--HEAD_END-->
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-fenetre" viewBox="0 0 32 32"><rect x="6" y="4" width="20" height="24" rx="1.5"></rect><path d="M16 4v24M6 15h20M9 28v1.5M23 28v1.5"></path></symbol>
+    <symbol id="i-volet" viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="6" rx="1.2"></rect><path d="M7 10v18h18V10M7 14.5h18M7 19h18M7 23.5h18M16 28v-2"></path></symbol>
+    <symbol id="i-porte" viewBox="0 0 32 32"><path d="M8 28V5.5A1.5 1.5 0 0 1 9.5 4h13A1.5 1.5 0 0 1 24 5.5V28M4 28h24"></path><rect x="12" y="8" width="8" height="7" rx="1"></rect><path d="M20 19v3"></path></symbol>
+    <symbol id="i-portail" viewBox="0 0 32 32"><path d="M4 28V8M28 28V8M4 11h24M4 24h24M9.5 11v13M15 11v13M20.5 11v13M3 8h2M27 8h2"></path></symbol>
+    <symbol id="i-garage" viewBox="0 0 32 32"><path d="M4 28V12l12-7 12 7v16"></path><path d="M8.5 28V15h15v13M8.5 19.3h15M8.5 23.6h15"></path></symbol>
+    <symbol id="i-pergola" viewBox="0 0 32 32"><path d="M5 28V11M27 28V11M3 11h26M3 7h26M7.5 7v4M12.5 7v4M17.5 7v4M22.5 7v4M2 28h6M24 28h6"></path></symbol>
+    <symbol id="i-store" viewBox="0 0 32 32"><path d="M4 5h24M5 5v3.5M27 5v3.5M4 8.5h24l-3 9H7z"></path><path d="M10 17.5v2M16 17.5v2M22 17.5v2M4 28h24"></path></symbol>
+    <symbol id="i-moustiquaire" viewBox="0 0 32 32"><rect x="6" y="4" width="20" height="24" rx="1.5"></rect><path d="M6 10h20M6 16h20M6 22h20M11 4v24M16 4v24M21 4v24" stroke-width="1"></path></symbol>
+    <symbol id="i-carport" viewBox="0 0 32 32"><path d="M3 11l13-5 13 5M5.5 10.2V28M26.5 10.2V28"></path><path d="M9 23h14l-1.6-4.5H10.6zM9 23v2.5M23 23v2.5M2 28h28"></path></symbol>
+    <symbol id="i-interieur" viewBox="0 0 32 32"><path d="M4 28h6v-5h5v-5h5v-5h5V8h3"></path><path d="M4 28h24"></path></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"></path></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5.5 3.5h3.2l1.8 4.6-2.3 1.5a11.5 11.5 0 0 0 6.2 6.2l1.5-2.3 4.6 1.8v3.2a2 2 0 0 1-2 2A16.5 16.5 0 0 1 3.5 5.5a2 2 0 0 1 2-2z"></path></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.3-7-12a7 7 0 0 1 14 0c0 5.7-7 12-7 12z"></path><circle cx="12" cy="9.5" r="2.6"></circle></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5.2l3.3 2"></path></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 6.5 8.5-6.5"></path></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.6-3.4 8.3-8 9.2-4.6-.9-8-4.6-8-9.2V6z"></path><path d="M8.5 12.2l2.4 2.4 4.6-4.8"></path></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 16.5L16.5 3 21 7.5 7.5 21z"></path><path d="M7 12.5l2 2M10 9.5l2 2M13 6.5l2 2"></path></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11L12 4l8.5 7M6 9.5V20h12V9.5"></path><path d="M10 20v-5h4v5"></path></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0 5.5 5.6l-8.6 8.6a2.1 2.1 0 0 1-3-3l8.6-8.6z" transform="translate(-1 -1)"></path><path d="M14 4.5l1.8-1.8 4 4-1.8 1.8"></path></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h4"></path></symbol>
+    <symbol id="i-hammer" viewBox="0 0 24 24"><path d="M13 7.5l3.5 3.5L7 20.5 3.5 17z"></path><path d="M11 5.5L14 2.5l6.5 6.5-3 3"></path></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"></path><path d="M5 19l7-7"></path></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"></circle><path d="M4.5 20.5c1-4 4-6 7.5-6s6.5 2 7.5 6"></path></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.85 5.95 6.55.8-4.83 4.5 1.25 6.48L12 17.33l-5.82 3.2 1.25-6.48L2.6 9.55l6.55-.8z"></path></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="La Boutique du Menuisier, agence de Tignieu-Jameyzieu">
+      <span class="brand-mark"><svg class="ico" aria-hidden="true"><use href="#i-fenetre"></use></svg></span>
+      <span class="brand-txt"><b>La Boutique du Menuisier</b><span>Tignieu-Jameyzieu</span></span>
+    </a>
+    <div class="top-actions">
+      <a class="top-tel" href="tel:+33478322749" aria-label="Appeler l'agence au 04 78 32 27 49"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg><span>04 78 32 27 49</span></a>
+      <a class="btn" href="#devis">Chiffrage gratuit</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <svg class="plan" viewBox="0 0 300 340" fill="none" stroke="#FFFFFF" stroke-width="1.2" aria-hidden="true">
+    <rect x="60" y="40" width="180" height="250"></rect>
+    <rect x="72" y="52" width="156" height="226"></rect>
+    <path d="M150 52v226M72 165h156"></path>
+    <path d="M60 20h180M60 14v12M240 14v12" stroke="#FEA101"></path>
+    <path d="M40 40v250M34 40h12M34 290h12" stroke="#FEA101"></path>
+    <text x="150" y="12" fill="#FEA101" stroke="none" font-size="11" text-anchor="middle" font-family="Instrument Sans, sans-serif">1 200 mm</text>
+    <text x="26" y="168" fill="#FEA101" stroke="none" font-size="11" text-anchor="middle" font-family="Instrument Sans, sans-serif" transform="rotate(-90 26 168)">1 350 mm</text>
+  </svg>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg>Agence de Tignieu-Jameyzieu · Nord-Isère</span>
+      <h1 id="h1">Fenêtres, portes et volets <span class="u">sur mesure<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14C70 5 190 3 296 11" stroke="#FEA101" stroke-width="6" fill="none" stroke-linecap="round"></path></svg></span>, posés près de chez vous.</h1>
+      <p class="lead">Décrivez votre projet en 2 minutes. <strong>Claude, votre conseiller à l'agence de Tignieu</strong>, vous rappelle dans la journée pour fixer une visite gratuite chez vous et vous remettre un devis précis.</p>
+      <ul class="checks">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Devis gratuit et sans engagement</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Prise de cotes à domicile</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Pose par nos propres équipes</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>SAV et réparation rapides</li>
+      </ul>
+      <div class="proof">
+        <div class="rating">
+          <span class="rating-num">4,9</span>
+          <div>
+            <span class="stars" aria-label="Note de 4,9 sur 5"><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg></span>
+            <small>Plus de 400 avis Google</small>
+          </div>
+        </div>
+        <div class="badge"><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg><span><b>Certifié RGE Qualibat</b>Accès aux aides à la rénovation</span></div>
+      </div>
+    </div>
+
+    <!-- Formulaire de chiffrage -->
+    <div class="quote" id="devis">
+      <div class="advisor">
+        <div class="avatar" aria-hidden="true">C<img src="claude.jpg" alt="" onerror="this.remove()"></div>
+        <div class="advisor-txt"><b>Claude</b><span>Votre conseiller · Agence de Tignieu</span></div>
+        <span class="advisor-tag"><i></i>Rappel dans la journée</span>
+      </div>
+      <form class="quote-body" id="quoteForm" novalidate>
+        <div class="quote-head">
+          <h2 id="formTitle">Votre chiffrage gratuit</h2>
+          <span id="stepCount">Étape 1 sur 3</span>
+        </div>
+        <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+        <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <!-- Étape 1 -->
+        <div class="step" data-step="1">
+          <p class="q" id="q1">Quel est votre projet ? <small>Plusieurs choix possibles</small></p>
+          <div class="tiles" role="group" aria-labelledby="q1">
+            <button type="button" class="tile" data-product="Fenêtres" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-fenetre"></use></svg>Fenêtres</button>
+            <button type="button" class="tile" data-product="Volets" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-volet"></use></svg>Volets</button>
+            <button type="button" class="tile" data-product="Porte d'entrée" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-porte"></use></svg>Porte d'entrée</button>
+            <button type="button" class="tile" data-product="Portail" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-portail"></use></svg>Portail</button>
+            <button type="button" class="tile" data-product="Porte de garage" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-garage"></use></svg>Porte de garage</button>
+            <button type="button" class="tile" data-product="Pergola" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-pergola"></use></svg>Pergola</button>
+            <button type="button" class="tile" data-product="Store banne" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-store"></use></svg>Store banne</button>
+            <button type="button" class="tile" data-product="Moustiquaire" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-moustiquaire"></use></svg>Moustiquaire</button>
+            <button type="button" class="tile" data-product="Autre / intérieur" aria-pressed="false"><span class="tick"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><svg class="ico" aria-hidden="true"><use href="#i-interieur"></use></svg>Carport, intérieur…</button>
+          </div>
+          <p class="err" id="err1" role="alert" hidden>Choisissez au moins un produit pour continuer.</p>
+          <button type="button" class="btn btn-block" data-next="2">Continuer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+          <div class="reassure"><span><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Gratuit</span><span><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Sans engagement</span><span><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>2 minutes</span></div>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="step" data-step="2" hidden>
+          <div class="group">
+            <p class="q" id="q2a">Il s'agit de…</p>
+            <div class="chips" role="group" aria-labelledby="q2a" data-field="type">
+              <button type="button" class="chip" data-value="Rénovation" aria-pressed="false">Une rénovation</button>
+              <button type="button" class="chip" data-value="Construction neuve" aria-pressed="false">Une construction neuve</button>
+            </div>
+          </div>
+          <div class="group">
+            <p class="q" id="q2b">Combien d'éléments ? <small>Environ</small></p>
+            <div class="chips" role="group" aria-labelledby="q2b" data-field="quantite">
+              <button type="button" class="chip" data-value="1" aria-pressed="false">1</button>
+              <button type="button" class="chip" data-value="2 à 4" aria-pressed="false">2 à 4</button>
+              <button type="button" class="chip" data-value="5 à 9" aria-pressed="false">5 à 9</button>
+              <button type="button" class="chip" data-value="10 et plus" aria-pressed="false">10 et plus</button>
+            </div>
+          </div>
+          <div class="group">
+            <p class="q" id="q2c">Pour quand ?</p>
+            <div class="chips" role="group" aria-labelledby="q2c" data-field="delai">
+              <button type="button" class="chip" data-value="Dès que possible" aria-pressed="false">Dès que possible</button>
+              <button type="button" class="chip" data-value="Sous 3 mois" aria-pressed="false">Sous 3 mois</button>
+              <button type="button" class="chip" data-value="Dans 3 à 6 mois" aria-pressed="false">3 à 6 mois</button>
+              <button type="button" class="chip" data-value="Je me renseigne" aria-pressed="false">Je me renseigne</button>
+            </div>
+          </div>
+          <p class="err" id="err2" role="alert" hidden>Indiquez le type de projet et l'échéance.</p>
+          <div class="nav">
+            <button type="button" class="back" data-prev="1"><svg class="ico" aria-hidden="true"><use href="#i-left"></use></svg>Retour</button>
+            <button type="button" class="btn" data-next="3">Continuer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+          </div>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="step" data-step="3" hidden>
+          <p class="q">Où Claude peut-il vous joindre ?</p>
+          <div class="fields">
+            <div class="field"><label for="prenom">Prénom</label><input id="prenom" name="prenom" type="text" autocomplete="given-name" required></div>
+            <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" type="text" autocomplete="family-name" required></div>
+            <div class="field"><label for="tel">Téléphone</label><input id="tel" name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" required></div>
+            <div class="field"><label for="cp">Code postal</label><input id="cp" name="code_postal" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="38230" required></div>
+            <div class="field full"><label for="email">E-mail <small>(facultatif, pour recevoir le devis)</small></label><input id="email" name="email" type="email" autocomplete="email"></div>
+          </div>
+          <div class="group">
+            <p class="q" id="q3">Le meilleur moment pour vous rappeler</p>
+            <div class="chips" role="group" aria-labelledby="q3" data-field="creneau">
+              <button type="button" class="chip" data-value="Matin" aria-pressed="false">Matin</button>
+              <button type="button" class="chip" data-value="Midi" aria-pressed="false">Midi</button>
+              <button type="button" class="chip" data-value="Après-midi" aria-pressed="false">Après-midi</button>
+              <button type="button" class="chip" data-value="Peu importe" aria-pressed="false">Peu importe</button>
+            </div>
+          </div>
+          <label class="consent" for="consent"><input type="checkbox" id="consent" name="consent">J'accepte d'être recontacté par La Boutique du Menuisier au sujet de ma demande. Mes données ne sont pas cédées à des tiers.</label>
+          <p class="err" id="err3" role="alert" hidden></p>
+          <div class="nav">
+            <button type="button" class="back" data-prev="2"><svg class="ico" aria-hidden="true"><use href="#i-left"></use></svg>Retour</button>
+            <button type="submit" class="btn" id="submitBtn">Être rappelé<svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg></button>
+          </div>
+        </div>
+
+        <!-- Confirmation -->
+        <div class="step done" data-step="4" hidden tabindex="-1" id="doneStep">
+          <span class="done-ico"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span>
+          <h3>Merci <span id="doneName"></span>, c'est noté.</h3>
+          <p id="doneTxt">Claude vous rappelle dans la journée pour parler de votre projet.</p>
+          <ol class="next">
+            <li><b>1</b>Appel de Claude pour préciser votre besoin</li>
+            <li><b>2</b>Visite gratuite et prise de cotes chez vous</li>
+            <li><b>3</b>Devis détaillé, sans engagement</li>
+          </ol>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="figures" aria-label="La Boutique du Menuisier en chiffres">
+  <div class="wrap">
+    <div class="fig"><b>2 000<em>+</em></b><span>chantiers terminés</span></div>
+    <div class="fig"><b>60<em> ans</em></b><span>de savoir-faire familial</span></div>
+    <div class="fig"><b>72<em> h</em></b><span>pour recevoir votre devis</span></div>
+    <div class="fig"><b>4</b><span>boutiques autour de Lyon</span></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-adv">
+  <div class="wrap adv">
+    <div class="portrait">
+      <div class="portrait-ph" aria-hidden="true"><b>C</b><span>Photo de Claude</span></div>
+      <img src="claude.jpg" alt="Claude, conseiller de La Boutique du Menuisier à Tignieu-Jameyzieu" onerror="this.remove()">
+      <div class="portrait-card">
+        <div><b>Claude</b><span>Conseiller · TPM Tignieu-Jameyzieu</span></div>
+        <svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>
+      </div>
+    </div>
+    <div class="adv-copy">
+      <span class="kicker">Votre interlocuteur</span>
+      <h2 id="h-adv">Un seul conseiller, du premier appel à la fin du chantier.</h2>
+      <p>Claude vient chez vous, regarde vos ouvertures, écoute vos priorités : isolation, sécurité, lumière, budget. Il compare avec vous les matériaux et les finitions, puis vous remet un devis clair, ligne par ligne. Pendant le chantier, c'est encore lui que vous appelez.</p>
+      <div class="pillars">
+        <div class="pillar"><svg class="ico" aria-hidden="true"><use href="#i-home"></use></svg><b>Visite à domicile</b><span>Gratuite, au créneau qui vous arrange.</span></div>
+        <div class="pillar"><svg class="ico" aria-hidden="true"><use href="#i-ruler"></use></svg><b>Conseil technique</b><span>PVC, alu, bois ou mixte : le bon choix pour votre maison.</span></div>
+        <div class="pillar"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg><b>Devis détaillé</b><span>Fourniture, pose et finitions, sans surprise.</span></div>
+      </div>
+      <div><a class="btn" href="#devis">Demander mon chiffrage<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-mist" aria-labelledby="h-prod">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div>
+        <span class="kicker">Nos menuiseries</span>
+        <h2 id="h-prod">Tout pour vos ouvertures, dedans comme dehors.</h2>
+      </div>
+      <p style="max-width:26em;color:var(--muted);font-size:17px">Choisissez un produit : il est ajouté directement à votre demande de chiffrage.</p>
+    </div>
+    <div class="prods">
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-fenetre"></use></svg></span><h3>Fenêtres</h3><ul><li>PVC, aluminium, bois</li><li>Mixte bois-alu</li><li>Baies coulissantes</li></ul><button type="button" data-pick="Fenêtres">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-volet"></use></svg></span><h3>Volets</h3><ul><li>Roulants, battants</li><li>Coulissants, persiennes</li><li>BSO, screen zip</li></ul><button type="button" data-pick="Volets">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-porte"></use></svg></span><h3>Portes d'entrée</h3><ul><li>Aluminium, acier</li><li>PVC, bois, mixte</li><li>Serrures multipoints</li></ul><button type="button" data-pick="Porte d'entrée">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-portail"></use></svg></span><h3>Portails</h3><ul><li>Coulissants</li><li>Battants</li><li>Télescopiques, motorisés</li></ul><button type="button" data-pick="Portail">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-garage"></use></svg></span><h3>Portes de garage</h3><ul><li>Sectionnelles</li><li>Basculantes, enroulables</li><li>Battantes</li></ul><button type="button" data-pick="Porte de garage">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-pergola"></use></svg></span><h3>Pergolas</h3><ul><li>Lames orientables</li><li>Lames fixes, toile</li><li>Ombrière solaire</li></ul><button type="button" data-pick="Pergola">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-store"></use></svg></span><h3>Stores bannes</h3><ul><li>Coffre intégral</li><li>Semi-coffre, classique</li><li>Voiles d'ombrage</li></ul><button type="button" data-pick="Store banne">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-moustiquaire"></use></svg></span><h3>Moustiquaires</h3><ul><li>Fenêtres et baies</li><li>Portes</li><li>Sur mesure</li></ul><button type="button" data-pick="Moustiquaire">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-carport"></use></svg></span><h3>Carports</h3><ul><li>Structure aluminium</li><li>Voiture, camping-car</li><li>Adossé ou autoporté</li></ul><button type="button" data-pick="Autre / intérieur">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+      <article class="prod"><span class="prod-ico"><svg class="ico" aria-hidden="true"><use href="#i-interieur"></use></svg></span><h3>Menuiserie intérieure</h3><ul><li>Portes, placards</li><li>Verrières</li><li>Escaliers</li></ul><button type="button" data-pick="Autre / intérieur">Chiffrer<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></button></article>
+    </div>
+    <div class="materials"><b>Matériaux :</b><span>PVC</span><span>Aluminium</span><span>Bois</span><span>Mixte bois-alu</span><span>Acier</span></div>
+  </div>
+</section>
+
+<section class="sec process" aria-labelledby="h-steps">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Comment ça se passe</span>
+      <h2 id="h-steps">Votre chantier en 4 étapes, sans rien laisser au hasard.</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="when">Aujourd'hui</span><h3>Votre demande</h3><p>Vous remplissez le formulaire en 2 minutes, ou vous appelez l'agence.</p></li>
+      <li><span class="when">Dans la journée</span><h3>Rappel et visite</h3><p>Claude vous rappelle et vient chez vous étudier le projet, au moment qui vous convient.</p></li>
+      <li><span class="when">Sous 72 h</span><h3>Devis et métrage</h3><p>Vous recevez un devis détaillé. Une fois validé, notre métreur prend les cotes exactes.</p></li>
+      <li><span class="when">Date convenue</span><h3>Pose soignée</h3><p>Nos poseurs installent, règlent et nettoient. Un suivi de satisfaction clôture le chantier.</p></li>
+    </ol>
+    <div class="process-cta">
+      <a class="btn" href="#devis">Lancer ma demande<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      <p>Ou appelez directement l'agence au <strong style="color:var(--on-navy)">04 78 32 27 49</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Pourquoi nous</span>
+      <h2 id="h-why">Le sérieux d'un réseau, la proximité d'une agence locale.</h2>
+    </div>
+    <div class="why">
+      <div><svg class="ico" aria-hidden="true"><use href="#i-ruler"></use></svg><b>100 % sur mesure</b><span>Chaque menuiserie est fabriquée aux dimensions exactes de votre maison, en neuf comme en rénovation.</span></div>
+      <div><svg class="ico" aria-hidden="true"><use href="#i-hammer"></use></svg><b>Pose par nos équipes</b><span>Dépose soignée, alignements, habillages et étanchéité : pas de sous-traitance anonyme.</span></div>
+      <div><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg><b>SAV réactif</b><span>Réglage, dépannage, réparation : l'agence de Tignieu intervient rapidement après la pose.</span></div>
+      <div><svg class="ico" aria-hidden="true"><use href="#i-leaf"></use></svg><b>Certifié RGE Qualibat</b><span>Une condition pour accéder à certaines aides à la rénovation énergétique, selon votre situation.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-mist" aria-labelledby="h-avis">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ils nous ont fait confiance</span>
+      <h2 id="h-avis">Ce que disent nos clients.</h2>
+    </div>
+    <div class="reviews">
+      <div class="score">
+        <b>4,9</b>
+        <span class="stars" aria-label="Note de 4,9 sur 5"><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg></span>
+        <span>Plus de 400 avis sur Google et 2 000 clients accompagnés.</span>
+      </div>
+      <figure class="review">
+        <span class="stars" aria-label="5 sur 5"><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg></span>
+        <blockquote>« Excellent contact : un commercial d'excellent conseil, le métreur et les installateurs efficaces et sympathiques, et un accueil téléphonique impeccable. »</blockquote>
+        <figcaption><i>H</i><span><b>Henri C.</b> · Avis Google</span></figcaption>
+      </figure>
+      <figure class="review">
+        <span class="stars" aria-label="5 sur 5"><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg></span>
+        <blockquote>« Nous avons changé fenêtres, volets et porte d'entrée. Nous sommes très satisfaits du résultat. Le travail est impeccable ! »</blockquote>
+        <figcaption><i>L</i><span><b>Liliane B.</b> · Avis Google</span></figcaption>
+      </figure>
+      <figure class="review">
+        <span class="stars" aria-label="5 sur 5"><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg><svg aria-hidden="true"><use href="#i-star"></use></svg></span>
+        <blockquote>« Une équipe au top, que ce soit le commercial, le métreur ou les ouvriers lors de la pose. Tous ont été à l'écoute de notre demande ! »</blockquote>
+        <figcaption><i>F</i><span><b>Franck D.</b> · Avis Google</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-shop">
+  <div class="wrap shop">
+    <div class="shop-main">
+      <span class="kicker">Notre showroom</span>
+      <h2 id="h-shop">Venez voir et toucher les produits à Tignieu-Jameyzieu.</h2>
+      <ul class="info">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg><div><b>TPM · La Boutique du Menuisier</b><span>65 route de Crémieu, 38230 Tignieu-Jameyzieu</span></div></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-clock"></use></svg><div><b>Du lundi au vendredi</b><span>8 h 45 – 12 h 30 · 13 h 30 – 17 h 00</span></div></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg><div><b>Téléphone</b><span><a href="tel:+33478322749">04 78 32 27 49</a></span></div></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg><div><b>E-mail</b><span><a href="mailto:contact@tpm38.fr">contact@tpm38.fr</a></span></div></li>
+      </ul>
+      <div class="shop-btns">
+        <a class="btn" href="#devis">Prendre rendez-vous</a>
+        <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=65+route+de+Cr%C3%A9mieu+38230+Tignieu-Jameyzieu" target="_blank" rel="noopener">Itinéraire<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      </div>
+    </div>
+    <div class="zone">
+      <h3>Secteur d'intervention</h3>
+      <p>L'agence de Tignieu intervient dans le Nord-Isère et l'Est lyonnais, notamment à :</p>
+      <div class="towns">
+        <span class="here">Tignieu-Jameyzieu</span><span>Pont-de-Chéruy</span><span>Charvieu-Chavagneux</span><span>Chavanoz</span><span>Crémieu</span><span>Saint-Romain-de-Jalionas</span><span>Villette-d'Anthon</span><span>Janneyrias</span><span>Meyzieu</span><span>Jonage</span><span>Satolas-et-Bonce</span><span>Villemoirieu</span>
+      </div>
+      <p class="network"><b>4 boutiques en région lyonnaise :</b> Tignieu-Jameyzieu, Beynost, Saint-André-de-Corcy et Sainte-Consorce.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-mist" aria-labelledby="h-faq">
+  <div class="wrap faq-grid">
+    <div class="sec-head">
+      <span class="kicker">Questions fréquentes</span>
+      <h2 id="h-faq">Avant de vous lancer.</h2>
+      <p>Une autre question ? Claude y répond lors de son appel.</p>
+    </div>
+    <div class="faq">
+      <details open><summary>Le devis est-il vraiment gratuit ?<i><svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></i></summary><p>Oui. La visite, la prise de mesures et le devis sont gratuits et ne vous engagent à rien.</p></details>
+      <details><summary>Sous quel délai suis-je rappelé ?<i><svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></i></summary><p>Claude vous rappelle dans la journée (du lundi au vendredi), sur le créneau que vous avez indiqué. Le devis détaillé suit généralement sous 72 h après la visite.</p></details>
+      <details><summary>Intervenez-vous en rénovation comme en neuf ?<i><svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></i></summary><p>Oui. Nous remplaçons des menuiseries existantes avec dépose soignée, et nous équipons aussi les constructions neuves.</p></details>
+      <details><summary>Quels matériaux proposez-vous ?<i><svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></i></summary><p>PVC, aluminium, bois, mixte bois-alu et acier selon les produits. Claude vous aide à choisir selon l'isolation, l'entretien, l'esthétique et le budget.</p></details>
+      <details><summary>Puis-je bénéficier d'aides financières ?<i><svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></i></summary><p>Nos poseurs sont certifiés RGE Qualibat, ce qui permet d'accéder à certaines aides à la rénovation énergétique selon votre logement et vos revenus. Nous faisons le point avec vous pendant la visite.</p></details>
+      <details><summary>Vos produits sont-ils garantis ?<i><svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></i></summary><p>Toutes nos menuiseries bénéficient des garanties fabricant et pose. Notre service après-vente intervient rapidement en cas de besoin.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="h-final">
+  <div class="wrap">
+    <div>
+      <h2 id="h-final">Votre projet mérite un vrai conseil.</h2>
+      <p>Deux minutes pour décrire votre besoin. Claude s'occupe du reste.</p>
+    </div>
+    <div class="final-btns">
+      <a class="btn" href="#devis">Demander mon chiffrage<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+      <a class="btn btn-line" href="tel:+33478322749"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>04 78 32 27 49</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="#top"><span class="brand-mark"><svg class="ico" aria-hidden="true"><use href="#i-fenetre"></use></svg></span><span class="brand-txt"><b>La Boutique du Menuisier</b><span>Tignieu-Jameyzieu</span></span></a>
+        <p>Conception, fabrication sur mesure et pose de menuiseries en bois, PVC, aluminium et mixte.</p>
+      </div>
+      <div><h4>Tignieu-Jameyzieu</h4><p>65 route de Crémieu<br>38230 Tignieu-Jameyzieu<br><a href="tel:+33478322749">04 78 32 27 49</a></p></div>
+      <div><h4>Beynost</h4><p>735 rue des Barronnières<br>01700 Beynost<br><a href="tel:+33478069581">04 78 06 95 81</a></p></div>
+      <div><h4>Saint-André-de-Corcy</h4><p>Showroom<br><a href="tel:+33478069581">04 78 06 95 81</a></p></div>
+      <div><h4>Sainte-Consorce</h4><p>Showroom<br><a href="tel:+33428295159">04 28 29 51 59</a></p></div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="year">2026</span> TPM · La Boutique du Menuisier Tignieu-Jameyzieu</span>
+      <span><a href="https://www.laboutiquedumenuisier-lyon.fr/mentions-legales/" target="_blank" rel="noopener">Mentions légales</a> · <a href="https://www.laboutiquedumenuisier-lyon.fr/" target="_blank" rel="noopener">laboutiquedumenuisier-lyon.fr</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn call" href="tel:+33478322749" aria-label="Appeler l'agence au 04 78 32 27 49"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg></a>
+  <a class="btn" href="#devis">Chiffrage gratuit<svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+</div>
+
+<script>
+(function(){
+  /* ---------- Réglages ----------
+     endpoint : adresse qui reçoit les demandes (FormSubmit envoie un e-mail).
+     La première demande déclenche un e-mail d'activation à cette adresse. */
+  var CONFIG = {
+    endpoint: "https://formsubmit.co/ajax/contact@tpm38.fr",
+    commercial: "Claude",
+    agence: "TPM Tignieu-Jameyzieu"
+  };
+
+  var form = document.getElementById("quoteForm");
+  var bar = document.getElementById("bar");
+  var stepCount = document.getElementById("stepCount");
+  var steps = form.querySelectorAll(".step");
+  var state = { step:1, products:[], type:"", quantite:"", delai:"", creneau:"" };
+
+  /* UTM et gclid pour suivre l'origine des demandes */
+  var params = {};
+  try {
+    var sp = new URLSearchParams(location.search);
+    ["utm_source","utm_medium","utm_campaign","utm_term","utm_content","gclid","fbclid"].forEach(function(k){ if (sp.get(k)) params[k] = sp.get(k); });
+  } catch(e){}
+
+  function show(n){
+    state.step = n;
+    steps.forEach(function(s){ s.hidden = Number(s.getAttribute("data-step")) !== n; });
+    bar.style.width = (n >= 3 ? 100 : n * 33.33) + "%";
+    stepCount.textContent = n <= 3 ? "Étape " + n + " sur 3" : "Demande envoyée";
+    document.getElementById("formTitle").textContent = n === 4 ? "Demande reçue" : "Votre chiffrage gratuit";
+    ["err1","err2","err3"].forEach(function(id){ document.getElementById(id).hidden = true; });
+  }
+  function err(id, msg){ var e = document.getElementById(id); if (msg) e.textContent = msg; e.hidden = false; }
+
+  /* Produits */
+  var tiles = form.querySelectorAll(".tile");
+  function setProduct(name, on){
+    var i = state.products.indexOf(name);
+    if (on && i < 0) state.products.push(name);
+    if (!on && i > -1) state.products.splice(i,1);
+    tiles.forEach(function(t){ if (t.getAttribute("data-product") === name) t.setAttribute("aria-pressed", on ? "true" : "false"); });
+  }
+  tiles.forEach(function(t){
+    t.addEventListener("click", function(){
+      setProduct(t.getAttribute("data-product"), t.getAttribute("aria-pressed") !== "true");
+      document.getElementById("err1").hidden = true;
+    });
+  });
+
+  /* Boutons « Chiffrer » des fiches produits */
+  document.querySelectorAll("[data-pick]").forEach(function(b){
+    b.addEventListener("click", function(){
+      setProduct(b.getAttribute("data-pick"), true);
+      if (state.step === 4) resetForm();
+      show(1);
+      document.getElementById("devis").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start" });
+    });
+  });
+
+  /* Choix uniques */
+  form.querySelectorAll(".chips").forEach(function(g){
+    var field = g.getAttribute("data-field");
+    g.querySelectorAll(".chip").forEach(function(c){
+      c.addEventListener("click", function(){
+        g.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+        c.setAttribute("aria-pressed","true");
+        state[field] = c.getAttribute("data-value");
+      });
+    });
+  });
+
+  form.querySelectorAll("[data-next]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var to = Number(b.getAttribute("data-next"));
+      if (to === 2 && !state.products.length) return err("err1");
+      if (to === 3 && (!state.type || !state.delai)) return err("err2");
+      show(to);
+      if (to === 3) setTimeout(function(){ document.getElementById("prenom").focus({preventScroll:true}); }, 50);
+    });
+  });
+  form.querySelectorAll("[data-prev]").forEach(function(b){
+    b.addEventListener("click", function(){ show(Number(b.getAttribute("data-prev"))); });
+  });
+
+  /* Mise en forme du téléphone */
+  var tel = document.getElementById("tel");
+  tel.addEventListener("input", function(){
+    var v = tel.value;
+    if (/^\+/.test(v)) return;
+    var d = v.replace(/\D/g,"").slice(0,10);
+    tel.value = d.replace(/(\d{2})(?=\d)/g,"$1 ");
+  });
+  var cp = document.getElementById("cp");
+  cp.addEventListener("input", function(){ cp.value = cp.value.replace(/\D/g,"").slice(0,5); });
+
+  function validTel(v){ var d = v.replace(/[\s.\-]/g,""); return /^0[1-9]\d{8}$/.test(d) || /^\+33[1-9]\d{8}$/.test(d); }
+
+  function resetForm(){
+    form.reset();
+    state = { step:1, products:[], type:"", quantite:"", delai:"", creneau:"" };
+    form.querySelectorAll("[aria-pressed]").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+    form.querySelectorAll("[aria-invalid]").forEach(function(x){ x.removeAttribute("aria-invalid"); });
+  }
+
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    if (state.step !== 3) return;
+    var f = {
+      prenom: document.getElementById("prenom").value.trim(),
+      nom: document.getElementById("nom").value.trim(),
+      telephone: tel.value.trim(),
+      code_postal: cp.value.trim(),
+      email: document.getElementById("email").value.trim()
+    };
+    var bad = [];
+    [["prenom", !f.prenom], ["nom", !f.nom], ["tel", !validTel(f.telephone)], ["cp", !/^\d{5}$/.test(f.code_postal)], ["email", f.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)]].forEach(function(p){
+      var el = document.getElementById(p[0]);
+      if (p[1]) { el.setAttribute("aria-invalid","true"); bad.push(el); } else el.removeAttribute("aria-invalid");
+    });
+    if (bad.length) { err("err3", !validTel(f.telephone) && f.telephone ? "Vérifiez le numéro de téléphone (10 chiffres)." : "Complétez les champs en rouge pour être rappelé."); bad[0].focus(); return; }
+    if (!document.getElementById("consent").checked) { err("err3","Cochez la case pour accepter d'être recontacté."); return; }
+    if (document.getElementById("website").value) return;
+
+    var payload = {
+      _subject: "Nouvelle demande de chiffrage (" + CONFIG.commercial + ") – " + f.prenom + " " + f.nom + " – " + f.code_postal,
+      _template: "table",
+      _captcha: "false",
+      Commercial: CONFIG.commercial,
+      Agence: CONFIG.agence,
+      Produits: state.products.join(", "),
+      Type: state.type,
+      Quantite: state.quantite || "Non précisé",
+      Delai: state.delai,
+      Prenom: f.prenom,
+      Nom: f.nom,
+      Telephone: f.telephone,
+      Code_postal: f.code_postal,
+      Email: f.email || "Non renseigné",
+      Creneau_rappel: state.creneau || "Peu importe",
+      Page: location.href.split("#")[0]
+    };
+    Object.keys(params).forEach(function(k){ payload[k] = params[k]; });
+
+    var btn = document.getElementById("submitBtn");
+    btn.disabled = true; btn.firstChild.textContent = "Envoi en cours…";
+
+    function success(){
+      document.getElementById("doneName").textContent = f.prenom;
+      var when = { "Matin":"en matinée", "Midi":"entre midi et deux", "Après-midi":"dans l'après-midi" }[state.creneau];
+      document.getElementById("doneTxt").textContent = "Claude vous rappelle " + (when || "dans la journée") + " au " + f.telephone + " pour parler de votre projet.";
+      show(4);
+      document.getElementById("doneStep").focus({preventScroll:true});
+      try { (window.dataLayer = window.dataLayer || []).push({ event:"generate_lead", lead_source:"landing_claude_tignieu", produits: payload.Produits }); } catch(e){}
+      try { if (window.gtag) window.gtag("event","generate_lead"); if (window.fbq) window.fbq("track","Lead"); } catch(e){}
+    }
+    function fail(){
+      btn.disabled = false; btn.firstChild.textContent = "Être rappelé";
+      err("err3","L'envoi n'a pas abouti. Réessayez, ou appelez l'agence au 04 78 32 27 49.");
+    }
+
+    var isPreview = !/^https?:$/.test(location.protocol) || /localhost|127\.0\.0\.1/.test(location.hostname) || !CONFIG.endpoint;
+    if (isPreview) { setTimeout(function(){ btn.disabled = false; btn.firstChild.textContent = "Être rappelé"; success(); }, 600); return; }
+
+    fetch(CONFIG.endpoint, { method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" }, body: JSON.stringify(payload) })
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(){ btn.disabled = false; btn.firstChild.textContent = "Être rappelé"; success(); })
+      .catch(fail);
+  });
+
+  try { document.getElementById("year").textContent = new Date().getFullYear(); } catch(e){}
+})();
+</script>
