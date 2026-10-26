@@ -358,6 +358,25 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 .mbar{display:none}
 
+/* ---------- formulaire centré ---------- */
+.screen{align-items:center;text-align:center}
+.q small{margin-left:auto;margin-right:auto;max-width:30em}
+.prod-head{flex-direction:column;gap:12px}
+.prod-head small{margin-bottom:0}
+.group{align-items:center;width:100%}
+.chips{justify-content:center}
+.stepper{align-self:center}
+.nav{width:100%;justify-content:center}
+.nav .btn{flex:0 1 260px}
+.btn,.back{white-space:nowrap}
+.tiles,.cart,.choices,.dims,.fields,.reassure,.consent,.err,#projetBox,#dimsBox{width:100%}
+.cart li,.dim-row,.consent,.field{text-align:left}
+.choice{flex-direction:column;justify-content:center;text-align:center;gap:10px;min-height:120px}
+.field label{text-align:left}
+.done .next li{justify-content:center}
+.mbar{transition:transform .25s var(--ease-out), opacity .2s ease}
+.mbar.away{transform:translateY(110%);opacity:0;pointer-events:none}
+
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
   .prods{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -398,10 +417,22 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
   .choices{grid-template-columns:minmax(0,1fr)}
   .next{grid-template-columns:minmax(0,1fr)}
-  .next li{flex-direction:row;text-align:left}
+  .next li{flex-direction:column;text-align:center}
   .portrait{width:190px;height:190px}
   .score{flex-direction:column;gap:8px}
   .score span{text-align:center}
+  .brand img{height:46px}
+  .brand-txt b{font-size:14px;white-space:nowrap}
+  .brand-txt span{font-size:12.5px}
+  .advisor{flex-direction:column;text-align:center;gap:10px;padding:18px 16px}
+  .advisor-txt{text-align:center}
+  .progress{flex-direction:column;gap:8px}
+  .trust{flex-direction:column;gap:18px}
+  .rating,.badge{flex-direction:column;text-align:center;gap:6px}
+  .stars{justify-content:center}
+  .nav{flex-wrap:nowrap}
+  .nav .back{flex:0 0 auto;padding:0 18px}
+  .nav .btn{flex:1 1 auto}
   .mbar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--paper);box-shadow:0 -12px 28px -14px rgba(6,43,73,.35);padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter-l)}
   .mbar .call{width:54px;padding:0}
   .mbar .call .ico{width:22px;height:22px}
@@ -409,11 +440,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:560px){
   .quote{border-radius:var(--r-lg)}
   .quote-body{padding:20px 16px 22px}
-  .advisor{padding:14px 16px;gap:12px}
   .avatar{width:54px;height:54px}
   .advisor-tag{display:none}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .tile{min-height:100px}
+  .choice{min-height:104px}
+  .brand-txt b{font-size:13px}
   .fields{grid-template-columns:minmax(0,1fr)}
   .dim-row{grid-template-columns:repeat(2,minmax(0,1fr))}
   .dim-row .dn{grid-column:1/-1;padding-bottom:0}
@@ -520,7 +552,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
           </div>
           <div class="nav">
             <button type="button" class="back" data-go="produit"><svg class="ico" aria-hidden="true"><use href="#i-left"></use></svg>Retour</button>
-            <button type="button" class="btn" id="addItem">Ajouter à ma demande<svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></button>
+            <button type="button" class="btn" id="addItem">Ajouter<svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg></button>
           </div>
         </div>
 
@@ -1044,6 +1076,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       .then(success).catch(fail);
   });
 
+  try {
+    var mbar = document.querySelector(".mbar");
+    if (mbar && "IntersectionObserver" in window) {
+      new IntersectionObserver(function(en){ mbar.classList.toggle("away", en[0].isIntersecting); }, { threshold: 0.15 }).observe($("devis"));
+    }
+  } catch(err){}
   try { $("year").textContent = new Date().getFullYear(); } catch(err){}
 })();
 </script>
