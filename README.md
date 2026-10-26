@@ -4,7 +4,9 @@ Landing page de demande de chiffrage pour Claude, conseiller de l'agence TPM –
 
 ## Contenu
 - `index.html` : la page en ligne (un seul fichier, aucune dépendance).
-- `claude.jpg` : photo de Claude, à déposer à la racine (format portrait, visage bien visible). Sans photo, un monogramme s'affiche.
+- `claude.jpg` : photo de Claude (remplaçable par une photo pro, même nom).
+- `logo.webp` : logo La Boutique du Menuisier.
+- `img/` : photos de chantiers réels.
 - `src/page.html` + `build.py` : source de la page ; `python3 build.py` régénère `index.html`.
 
 ## Réception des demandes
